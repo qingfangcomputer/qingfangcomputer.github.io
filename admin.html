@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QF admin login</title>
+        <style>
+		body1 {
+            font-family: Arial, sans-serif;
+        }
+        .time-display {
+            position: fixed;
+            left: 30px;
+            top: 50px;
+            z-index: 1000;
+        }
+        body {
+            background: linear-gradient(135deg, #0099ff, #66b3ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            width: 400px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .login-title {
+            text-align: center;
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 12px 0px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+			align-items: center;
+        }
+        .input-field:focus {
+            border-color: #007acc;
+        }
+        .login-button {
+            width: 100%;
+            padding: 10px 0;
+            background: #007acc;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login-button:hover {
+            background: #005f99;
+        }
+		.login-wenzi {
+			text-align: center;
+		}
+    </style>
+</head>
+<body1>
+    <h3 class="time-display"></h3>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1; // getMonth() returns 0-11, so add 1
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+
+            // Pad single digits with leading zero
+            month = ('0' + month).slice(-2);
+            day = ('0' + day).slice(-2);
+            hour = ('0' + hour).slice(-2);
+            minute = ('0' + minute).slice(-2);
+            second = ('0' + second).slice(-2);
+
+            // Display the time in YYYY-MM-DD HH:mm:ss format
+            var timeString = '系统时间:' + year + '年' + month + '月' + day + '日 ' + hour + ':' + minute + ':' + second;
+            document.querySelector('.time-display').innerText = timeString;
+        }
+
+        // Update the time every second
+        setInterval(updateTime, 1000);
+    </script>
+</body1>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">管理员登录</h2>
+        <h3 class="login-wenzi">您的每次登录操作都会被系统记录，内容包括您的ip地址及登陆时间，非法爆破登录窗口是犯法的！<br>管理员提示：莫伸手，伸手必被抓！😏😏😏</p>
+        <form class="login-form" id="loginForm">
+            <div class="input-group">
+                <input type="text" id="usernameField" class="input-field" placeholder=" 用户名  username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="passwordField" class="input-field" placeholder=" 密码  password" required>
+            </div>
+            <button class="login-button">登录</button>
+        </form>
+        <p id="error-message"></p>
+    </div>
+
+    <!-- 引入 JS 文件 -->
+    <script src="scripts.js"></script>
+</body>
+</html>
